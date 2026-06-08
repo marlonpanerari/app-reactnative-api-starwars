@@ -3,9 +3,10 @@ import { Text, View, FlatList, SafeAreaView } from 'react-native';
 import estilo from '../components/estiloRebeldes';
 
 const request = async (callback) => {
-  const response = await fetch('https://swapi.dev/api/films/'); 
-  const parsed = await response.json();
-  callback(parsed.results);
+  const response = await fetch('https://swapi.info/api/films/')
+  .then((res) => res.json())
+  .then((json) => callback(json))
+  .catch((error) => console.error(error))
 }
 
 export default function Filmes() {
